@@ -1,5 +1,5 @@
 import { collectDigits, disableController, disablePanel, switchController } from "../utils";
-import countdownHandler, { closeCountdown } from "./countdown";
+import countdownHandler, { openCountdown, closeCountdown } from "./countdown";
 
 export default class Ticker {
   private static instance: Ticker;
@@ -28,6 +28,7 @@ export default class Ticker {
     [this.firstDigit, this.secondDigit, this.thirdDigit, this.fourthDigit].forEach((digit, index) => this.oDigits[index].textContent = digit + '');
 
     if(this.initialSeconds > this.countdown && this.leftSeconds <= this.countdown) {
+      openCountdown();
       countdownHandler(this.leftSeconds);
     }
 

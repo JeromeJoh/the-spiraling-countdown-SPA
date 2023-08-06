@@ -1,12 +1,15 @@
-const oCountdown = document.querySelector('.countdown');
+// doms
+const oCountdown: HTMLElement = document.querySelector('.countdown');
+const imgPlaceholder: HTMLImageElement = oCountdown.querySelector('img');
+
+// utils
+function getImgUrl(num: number): string {
+  return new URL(`../assets/svg/${num}.svg`, import.meta.url).href;
+}
 
 export default function countdownHandler(seconds: number): void {
-  if(!oCountdown.classList.contains('active')) {
-    oCountdown.classList.add('active');
-  }
-
   // image
-  oCountdown.querySelector('img').src = getImgUrl(seconds);
+  imgPlaceholder.src = getImgUrl(seconds);
 
   // audio
   let audio: HTMLAudioElement =  new Audio('src/assets/sounds/smashed.wav');
@@ -32,10 +35,14 @@ export default function countdownHandler(seconds: number): void {
   audio.play();
 }
 
-export function closeCountdown() {
-  oCountdown.classList.remove('active');
+export function openCountdown() {
+  if(!oCountdown.classList.contains('active')) {
+    oCountdown.classList.add('active');
+  }
 }
 
-function getImgUrl(num: number): string {
-  return new URL(`../assets/svg/${num}.svg`, import.meta.url).href;
+export function closeCountdown() {
+  if(oCountdown.classList.contains('active')) {
+    oCountdown.classList.remove('active');
+  }
 }

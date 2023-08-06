@@ -177,7 +177,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: black;
   user-select: none;
 }
 
@@ -186,7 +186,7 @@ body {
 }
 
 .countdown img {
-  height: 80%;
+  height: 60%;
   margin: auto;
 }
 
@@ -199,9 +199,6 @@ body {
   }
   .panel {
     margin-right: 0;
-  }
-  .countdown img {
-    height: 60%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -218,6 +215,6 @@ body {
     height: 9rem;
   }
   .countdown img {
-    height: 40%;
+    height: 30%;
   }
 }
