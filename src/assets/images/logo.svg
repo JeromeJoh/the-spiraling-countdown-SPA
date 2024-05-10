@@ -1,0 +1,16 @@
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="69.7332 285.811 660.534 228.508" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<radialGradient cx="0" cy="0" gradientTransform="matrix(646.857 324.556 -324.556 646.857 253.952 368.762)" gradientUnits="userSpaceOnUse" id="RadialGradient" r="1">
+<stop offset="0" stop-color="#e9686e"/>
+<stop offset="1" stop-color="#000000"/>
+</radialGradient>
+<radialGradient cx="0" cy="0" gradientTransform="matrix(-39.0959 -116.49 116.49 -39.0959 581 478.224)" gradientUnits="userSpaceOnUse" id="RadialGradient_2" r="1">
+<stop offset="0" stop-color="#351e1f"/>
+<stop offset="1" stop-color="#e9686e"/>
+</radialGradient>
+</defs>
+<g id="logo">
+<path d="M488.78 355.56C488.78 355.56 466.045 392.821 418.903 397.918C371.762 403.014 298.187 367.685 279.794 351.617C262.913 336.87 183.915 279.225 122.331 287.646C60.7324 296.07 68.0304 342.334 75.8401 351.266C85.7999 362.657 110.616 356.662 109.24 337.389C108.352 324.958 95.8462 325.728 90.5093 329.463C87.2625 331.736 85.2037 336.057 89.2911 339.277C92.9509 342.161 98.2649 336.864 98.4616 333.52C98.4616 333.52 100.144 339.623 97.8915 343.513C95.0692 348.387 87.7603 350.835 82.5205 345.4C71.0156 333.465 99.0132 306.014 117.341 304.021C127.486 302.918 161.631 300.623 269.687 416.325C386.844 541.773 588.979 518.321 677.449 494.113C677.449 494.113 575.205 465.525 488.78 355.56Z" fill="url(#RadialGradient)" fill-rule="nonzero" opacity="1" stroke="#813a3d" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="0.2" stroke-width="2"/>
+<path d="M451.049 309.689C451.049 309.689 449.206 299.536 482.161 302.578C495.623 303.821 503.276 318.071 513.227 322.875C523.178 327.679 541.899 336.722 551.335 348.388C560.771 360.055 648.918 438.676 648.918 438.676C648.918 438.676 672.804 460.094 695.543 468.225C718.282 476.356 735.84 508.085 726.882 508.085C717.924 508.085 616.086 479.32 574.902 443.668C533.718 408.016 513.259 388.355 482.696 347.638C466.741 326.382 449.23 328.053 451.049 309.689Z" fill="url(#RadialGradient_2)" fill-rule="nonzero" opacity="1" stroke="#d76166" stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"/>
+</g>
+</svg>
