@@ -12,9 +12,9 @@ export default function countdownHandler(seconds: number): void {
   imgPlaceholder.src = getImgUrl(seconds);
 
   // audio
-  let audio: HTMLAudioElement =  new Audio('src/assets/sounds/smashed.wav');
+  let audio: HTMLAudioElement = new Audio('src/assets/sounds/smashed.wav');
 
-  switch(seconds) {
+  switch (seconds) {
     case 15:
     case 14:
     case 13:
@@ -36,13 +36,13 @@ export default function countdownHandler(seconds: number): void {
 }
 
 export function openCountdown() {
-  if(!oCountdown.classList.contains('active')) {
+  if (!oCountdown.classList.contains('active')) {
     oCountdown.classList.add('active');
   }
 }
 
 export function closeCountdown() {
-  if(oCountdown.classList.contains('active')) {
+  if (oCountdown.classList.contains('active')) {
     oCountdown.classList.remove('active');
   }
 }
