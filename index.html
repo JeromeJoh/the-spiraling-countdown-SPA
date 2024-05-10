@@ -7,14 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome To My Island</title>
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Jaro:opsz@6..72&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./src/css/base.css">
   <script type="module" src="./src/index.ts" defer></script>
 </head>
 
 <body>
   <header class="banner">
-    <img src="src/assets/images/logo.png" alt="">
+    <img src="src/assets/images/logo.svg" alt="">
     <h1><em>The Spiraling Tour</em> Countdown</h1>
-    <p>inspired by the visuals of the album <span>「Desire, I Want To Turn Into You」</span></p>
   </header>
   <main class="ticker">
     <section class="panel">
@@ -40,19 +44,16 @@
         <button class="minus"></button>
       </div>
     </section>
-    <section class="controller">
-        <button class="reset"></button>
-        <button class="start" id="start_pause"></button>
-    </section>
   </main>
-  <footer class="credit">
-    <img src="src/assets/images/spiraling.gif" alt="">
-    <p>Presented By Jerome Joh</p>
-    <a href="https://github.com/JeromeJoh" target="_blank">https://github.com/JeromeJoh</a>
-  </footer>
-  <aside class="countdown">
-    <img alt="countdown">
+  <aside class="controller">
+    <button class="reset"></button>
+    <button class="start" id="start_pause"></button>
+    <img src="src/assets/images/spiraling.gif" alt="" class="spiraling-tl">
+    <img src="src/assets/images/spiraling.gif" alt="" class="spiraling-rl">
   </aside>
+  <div class="countdown">
+    <img alt="countdown">
+  </div>
 </body>
 
 </html>

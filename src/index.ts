@@ -1,4 +1,3 @@
-import './style.css';
 import Ticker from './Ticker/index';
 import { clearPanel, switchController } from './utils';
 
