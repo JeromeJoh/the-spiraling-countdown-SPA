@@ -3,8 +3,8 @@ import {
   disableController,
   disablePanel,
   switchController,
-} from "../utils";
-import countdownHandler, { openCountdown, closeCountdown } from "./countdown";
+} from '../utils';
+import countdownHandler, { openCountdown, closeCountdown } from './countdown';
 
 export default class Ticker {
   private static instance: Ticker;
@@ -35,7 +35,7 @@ export default class Ticker {
       this.secondDigit,
       this.thirdDigit,
       this.fourthDigit,
-    ].forEach((digit, index) => (this.oDigits[index].textContent = digit + ""));
+    ].forEach((digit, index) => (this.oDigits[index].textContent = digit + ''));
 
     if (
       this.initialSeconds > this.countdown &&
@@ -52,7 +52,7 @@ export default class Ticker {
 
   private runOut() {
     disablePanel(false);
-    switchController("pause");
+    switchController('pause');
     clearInterval(this.intervalId);
     setTimeout(() => closeCountdown(), 1000);
   }
@@ -85,7 +85,7 @@ export default class Ticker {
   public reset() {
     clearInterval(this.intervalId);
     disablePanel(false);
-    switchController("pause");
+    switchController('pause');
   }
 
   private updateDigits(seconds: number) {

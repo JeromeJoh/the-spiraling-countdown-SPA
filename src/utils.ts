@@ -1,14 +1,14 @@
 export function collectDigits(oDigits: HTMLCollection): number[] {
-  return [...oDigits].map(oDigit => parseInt(oDigit.textContent));
+  return [...oDigits].map((oDigit) => parseInt(oDigit.textContent));
 }
 
 export function clearPanel(oDigit: HTMLCollection): void {
-  [...oDigit].forEach(oDigit => oDigit.textContent = '0');
+  [...oDigit].forEach((oDigit) => (oDigit.textContent = '0'));
 }
 
 export function switchController(className: string): void {
   const target = document.querySelector('#start_pause');
-  switch(className) {
+  switch (className) {
     case 'start':
       target.className = 'pause';
       break;
@@ -22,7 +22,7 @@ export function switchController(className: string): void {
 
 export function disablePanel(disabled: boolean): void {
   const oPanel: HTMLElement = document.querySelector('.panel');
-  if(disabled) {
+  if (disabled) {
     oPanel.style.pointerEvents = 'none';
   } else {
     oPanel.style.pointerEvents = 'auto';
@@ -31,7 +31,7 @@ export function disablePanel(disabled: boolean): void {
 
 export function disableController(disabled: boolean): void {
   const oController: HTMLElement = document.querySelector('.controller');
-  if(disabled) {
+  if (disabled) {
     oController.style.pointerEvents = 'none';
   } else {
     oController.style.pointerEvents = 'auto';
