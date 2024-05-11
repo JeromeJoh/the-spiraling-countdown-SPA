@@ -42,6 +42,10 @@ body {
 }
 
 header {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   margin-top: 6rem;
   text-align: center;
 
@@ -62,20 +66,30 @@ header {
 
 main {
   flex: 1;
+  display: flex;
   margin: 2rem auto;
   font-family: 'Jaro', sans-serif;
+  padding-top: 4rem;
   // border: red solid 1px;
+
+  & > img {
+    width: 20rem;
+
+    &:nth-child(3) {
+      transform: rotateY(180deg);
+    }
+  }
 
   .panel {
     position: relative;
-    top: 40%;
-    transform: translateY(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 8rem;
     text-align: center;
     // border: lime solid 1px;
+    margin: 0 4rem;
+    color: #d0d0d0;
 
     button {
       width: 6rem;
@@ -99,7 +113,6 @@ main {
       padding: 2rem 4rem;
       line-height: 8rem;
       text-align: center;
-      color: #d0d0d0;
     }
 
     .semicolon {
@@ -179,11 +192,19 @@ main {
   html {
     font-size: 56%;
   }
+
+  main > img {
+    width: 15rem;
+  }
 }
 
 @media screen and (max-width: 768px) {
   html {
     font-size: 50%;
+  }
+
+  main > img {
+    width: 10rem;
   }
 
   .countdown img {
