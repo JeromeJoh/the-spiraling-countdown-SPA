@@ -52,7 +52,7 @@ import { clearPanel, switchController } from './utils';
     switch (className) {
       case 'start':
         ticker.start();
-        switchController(className);
+        ticker.initialSeconds && switchController(className);
         break;
       case 'pause':
         ticker.pause();

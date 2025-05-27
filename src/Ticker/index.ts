@@ -14,7 +14,7 @@ export default class Ticker {
   private thirdDigit: number;
   private fourthDigit: number;
 
-  private initialSeconds: number;
+  public initialSeconds: number;
   private leftSeconds: number;
   private countdown: number = 15;
   private intervalId: number;
