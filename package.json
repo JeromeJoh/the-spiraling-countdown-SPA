@@ -16,5 +16,8 @@
   "license": "ISC",
   "devDependencies": {
     "vite": "^4.3.5"
+  },
+  "dependencies": {
+    "imagesloaded": "^5.0.0"
   }
 }
