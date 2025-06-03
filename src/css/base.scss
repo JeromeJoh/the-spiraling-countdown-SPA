@@ -39,14 +39,16 @@ body {
   color: var(--secondary-color);
   overflow: hidden;
   user-select: none;
+  // background: repeating-conic-gradient(
+  //   rgb(13, 13, 13),
+  //   var(--secondary-color),
+  //   rgb(13, 13, 13) 0.8deg
+  // );
 }
 
 header {
-  position: fixed;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 6rem;
+  width: 100%;
+  padding: 4rem 0;
   text-align: center;
 
   img {
@@ -67,27 +69,20 @@ header {
 main {
   flex: 1;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 2rem auto;
-  font-family: 'Jaro', sans-serif;
-  padding-top: 4rem;
-  // border: red solid 1px;
-
-  & > img {
-    width: 20rem;
-
-    &:nth-child(3) {
-      transform: rotateY(180deg);
-    }
-  }
+  padding-bottom: 8%;
 
   .panel {
+    flex: 1;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 8rem;
     text-align: center;
-    // border: lime solid 1px;
+    font-family: 'Amarante', sans-serif;
     margin: 0 4rem;
     color: #d0d0d0;
 
@@ -95,15 +90,25 @@ main {
       width: 6rem;
       height: 6rem;
       background-size: 6rem;
+      background-position: center;
       transition: all 0.15s ease-in-out;
+      // filter: brightness(0) invert(1);
+      opacity: 0;
     }
 
     .plus {
-      background-image: url(/src/assets/images/button/plus.png);
+      background-image: url('/src/assets/images/button/plus.png');
+      &:hover {
+        filter: brightness(0.8) invert(1);
+      }
     }
 
     .minus {
-      background-image: url(/src/assets/images/button/minus.png);
+      background-image: url('/src/assets/images/button/minus.png');
+      transform: translateY(10px);
+      &:hover {
+        filter: brightness(0.2) invert(1);
+      }
     }
 
     .num {
@@ -120,55 +125,62 @@ main {
       top: -0.5rem;
     }
   }
+
+  .controller {
+    position: relative;
+    display: flex;
+    gap: 8rem;
+    padding: 4rem 0;
+
+    button {
+      width: 6rem;
+      height: 6rem;
+      margin: 0 2rem;
+      background-size: 5rem;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .start {
+      background-image: url('/src/assets/images/button/start.svg');
+    }
+
+    .pause {
+      background-image: url('/src/assets/images/button/pause.svg');
+    }
+
+    .reset {
+      background-image: url('/src/assets/images/button/reset.svg');
+    }
+  }
 }
 
-.controller {
-  button {
-    width: 6rem;
-    height: 6rem;
-    margin: 0 2rem;
-    background-size: 5rem;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.decor {
+  --innerPadding: 2rem;
 
   img {
     height: 6rem;
   }
 
-  .reset {
-    position: fixed;
-    left: 4rem;
-    bottom: 4rem;
-  }
-
-  #start_pause {
-    position: fixed;
-    right: 4rem;
-    bottom: 4rem;
-  }
-
   .spiraling-tl {
     position: fixed;
-    left: 4rem;
-    top: 4rem;
+    left: var(--innerPadding);
+    top: var(--innerPadding);
   }
   .spiraling-rl {
     position: fixed;
-    right: 4rem;
-    top: 4rem;
+    right: var(--innerPadding);
+    top: var(--innerPadding);
   }
-
-  .start {
-    background-image: url(/src/assets/images/button/start.svg);
+  .spiraling-bl {
+    position: fixed;
+    left: var(--innerPadding);
+    bottom: var(--innerPadding);
   }
-
-  .pause {
-    background-image: url(/src/assets/images/button/pause.svg);
-  }
-
-  .reset {
-    background-image: url(/src/assets/images/button/reset.svg);
+  .spiraling-br {
+    position: fixed;
+    right: var(--innerPadding);
+    bottom: var(--innerPadding);
   }
 }
 
@@ -176,7 +188,7 @@ main {
   display: none;
   position: fixed;
   inset: 0;
-  background-color: #0d0d0d;
+  background-color: rgba(13, 13, 13, 1);
 
   &.active {
     display: flex;
@@ -201,6 +213,10 @@ main {
 @media screen and (max-width: 768px) {
   html {
     font-size: 50%;
+  }
+
+  h1 {
+    font-size: 2rem;
   }
 
   main > img {

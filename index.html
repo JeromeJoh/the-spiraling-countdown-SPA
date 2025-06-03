@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Jaro:opsz@6..72&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Great+Vibes&family=Jaro:opsz@6..72&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./src/css/base.css">
   <script type="module" src="./src/index.ts" defer></script>
@@ -21,7 +21,6 @@
     <h1><em>The Spiraling Tour</em> Countdown</h1>
   </header>
   <main class="ticker">
-    <img src="src/assets/images/bird.svg" alt="">
     <section class="panel">
       <div>
         <button class="plus"></button>
@@ -45,13 +44,16 @@
         <button class="minus"></button>
       </div>
     </section>
-    <img class="right-pattern" src="src/assets/images/bird.svg" alt="">
+    <nav class="controller">
+      <button class="reset"></button>
+      <button class="start" id="start_pause"></button>
+    </nav>
   </main>
-  <aside class="controller">
-    <button class="reset"></button>
-    <button class="start" id="start_pause"></button>
+  <aside class="decor">
     <img src="src/assets/images/spiraling.gif" alt="" class="spiraling-tl">
     <img src="src/assets/images/spiraling.gif" alt="" class="spiraling-rl">
+    <img src="src/assets/images/spiraling.gif" alt="" class="spiraling-bl">
+    <img src="src/assets/images/spiraling.gif" alt="" class="spiraling-br">
   </aside>
   <div class="countdown">
     <img alt="countdown">
