@@ -5,95 +5,121 @@ import {
   switchController,
 } from '../utils';
 import countdownHandler, { openCountdown, closeCountdown } from './countdown';
+import { gsap } from 'gsap';
+
+const COUNTDOWN_THRESHOLD = 15;
+const DIGIT_COUNT = 4;
+const ANIMATION_CONFIG = {
+  // y: -8,
+  // stagger: 0.05,
+  opacity: 0.5,
+  ease: 'power2.inOut',
+  duration: 0.3,
+};
+const COUNTDOWN_CLOSE_DELAY = 1000;
 
 export default class Ticker {
   private static instance: Ticker;
-  private oDigits: HTMLCollection;
-  private firstDigit: number;
-  private secondDigit: number;
-  private thirdDigit: number;
-  private fourthDigit: number;
-
+  private digitElements: HTMLCollection;
+  private digits: number[] = new Array(DIGIT_COUNT).fill(0);
   public initialSeconds: number;
-  private leftSeconds: number;
-  private countdown: number = 15;
-  private intervalId: number;
+  private remainingSeconds: number;
+  private intervalId: ReturnType<typeof setInterval> | null = null;
 
-  constructor(oDigits: HTMLCollection) {
-    this.oDigits = oDigits;
+  constructor(digitElements: HTMLCollection) {
+    this.digitElements = digitElements;
   }
 
-  public static create(oDigits: HTMLCollection) {
-    if (Ticker.instance) return Ticker.instance;
-    return new Ticker(oDigits);
+  public static create(digitElements: HTMLCollection) {
+    return (Ticker.instance ??= new Ticker(digitElements));
   }
 
-  private tickHandler = () => {
-    this.updateDigits(--this.leftSeconds);
-    [
-      this.firstDigit,
-      this.secondDigit,
-      this.thirdDigit,
-      this.fourthDigit,
-    ].forEach((digit, index) => (this.oDigits[index].textContent = digit + ''));
+  private tickHandler() {
+    this.remainingSeconds--;
+    this.updateDigits();
+    this.updateDisplay();
+    this.animateDigits();
 
     if (
-      this.initialSeconds > this.countdown &&
-      this.leftSeconds <= this.countdown
+      this.initialSeconds > COUNTDOWN_THRESHOLD &&
+      this.remainingSeconds <= COUNTDOWN_THRESHOLD
     ) {
       openCountdown();
-      countdownHandler(this.leftSeconds);
+      countdownHandler(this.remainingSeconds);
     }
 
-    if (this.leftSeconds === 0) {
+    if (this.remainingSeconds <= 0) {
       this.runOut();
+      return;
     }
-  };
+  }
 
-  private runOut() {
+  private runOut(): void {
+    this.cleanup();
     disablePanel(false);
     switchController('pause');
-    clearInterval(this.intervalId);
-    setTimeout(() => closeCountdown(), 1000);
+    setTimeout(closeCountdown, COUNTDOWN_CLOSE_DELAY);
   }
 
   public start() {
-    const digits: number[] = collectDigits(this.oDigits);
-    [this.firstDigit, this.secondDigit, this.thirdDigit, this.fourthDigit] =
-      digits;
-    this.initialSeconds =
-      digits[0] * 600 + digits[1] * 60 + digits[2] * 10 + digits[3];
+    this.digits = collectDigits(this.digitElements);
 
-    if (this.initialSeconds === 0) {
-      disableController(true);
-      return;
-    } else {
-      disableController(false);
-    }
+    this.initialSeconds = this.calculateTotalSeconds(this.digits);
 
-    this.leftSeconds = this.initialSeconds;
+    if (this.initialSeconds === 0) return;
+
+    disableController(false);
+
+    this.remainingSeconds = this.initialSeconds;
 
     this.tickHandler();
-    this.intervalId = setInterval(this.tickHandler, 1000);
+    this.intervalId = setInterval(() => this.tickHandler(), 1000);
     disablePanel(true);
   }
 
   public pause() {
-    clearInterval(this.intervalId);
+    this.cleanup();
   }
 
   public reset() {
-    clearInterval(this.intervalId);
+    this.cleanup();
+    this.digits.fill(0);
     disablePanel(false);
     switchController('pause');
   }
 
-  private updateDigits(seconds: number) {
-    this.firstDigit = Math.floor(seconds / 600);
-    this.secondDigit = Math.floor((seconds - this.firstDigit * 600) / 60);
-    this.thirdDigit = Math.floor(
-      (seconds - this.firstDigit * 600 - this.secondDigit * 60) / 10
-    );
-    this.fourthDigit = seconds % 10;
+  private cleanup(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
+  }
+
+  private calculateTotalSeconds(digits: number[]): number {
+    return digits[0] * 600 + digits[1] * 60 + digits[2] * 10 + digits[3];
+  }
+
+  private updateDigits(): void {
+    let remaining = this.remainingSeconds;
+    this.digits[0] = Math.floor(remaining / 600);
+    remaining %= 600;
+    this.digits[1] = Math.floor(remaining / 60);
+    remaining %= 60;
+    this.digits[2] = Math.floor(remaining / 10);
+    this.digits[3] = remaining % 10;
+  }
+
+  private updateDisplay(): void {
+    Array.from(this.digitElements).forEach((element, index) => {
+      element.textContent = this.digits[index].toString();
+    });
+  }
+
+  private animateDigits(): void {
+    gsap.killTweensOf(this.digitElements);
+    gsap.from(this.digitElements, ANIMATION_CONFIG);
+    // gsap.from('.semicolon', {
+    //   color: '#0d0d0d',
+    // });
   }
 }

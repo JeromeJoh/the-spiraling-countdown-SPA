@@ -25,8 +25,8 @@ export default function countdownHandler(seconds: number): void {
       audio = new Audio('src/assets/sounds/tick.wav');
       break;
     case 0:
-      audio.play();
-      audio = new Audio('src/assets/sounds/outro.mp3');
+      // audio.play();
+      // audio = new Audio('src/assets/sounds/outro.mp3');
       break;
     default:
       break;
